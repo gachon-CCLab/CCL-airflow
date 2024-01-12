@@ -12,7 +12,7 @@ def test():
 
     
 with DAG(
-    'tutorial',
+    'tutorial_test',
     # These args will get passed on to each operator
     # You can override them on a per-task basis during operator initialization
     default_args={
