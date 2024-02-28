@@ -23,7 +23,7 @@ def Columns (data):
 
 default_args = {
     'owner': 'airflow',
-    'start_date': datetime(2024,1,28),
+    'start_date': datetime(2024,2,27),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
