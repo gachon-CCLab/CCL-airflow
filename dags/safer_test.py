@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 
 def Data() :
     
-    data = pd.read_csv('/mnt/nas/disk02/Data/Health/Mental Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv', sep='\t', encoding='utf-8')
+    data = pd.read_csv('/mnt/nas/disk02/Data/Health/Mental_Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv', sep='\t', encoding='utf-8')
     
     
     return data
