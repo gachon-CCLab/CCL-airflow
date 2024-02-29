@@ -1,6 +1,7 @@
 import os
 import requests
 import pandas as pd
+import urllib.parse
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
@@ -12,8 +13,9 @@ from datetime import datetime, timedelta
  
 def Data():
     url = "http://192.9.202.101:/volume2/디스크02/mnt/nas/disk02/Data/Health/Mental_Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv"
-    response = requests.get(url)
-    data = pd.read_csv(url, sep='\t', encoding='utf-8')
+    encoded_url = urllib.parse.quote(url, safe=':/')
+    
+    data = pd.read_csv(encoded_url, sep='\t', encoding='utf-8')
     return data
 
 def Columns (data):
