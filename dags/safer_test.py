@@ -9,8 +9,7 @@ from datetime import datetime, timedelta
 
 def Data():
     url = "http://192.9.202.101:/디스크02/Data/Health/Mental_Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv"
-    encoded_url = urllib.parse.quote(url, safe=':/')
-    data = pd.read_csv(encoded_url, sep='\t', encoding='utf-8')
+    data = pd.read_csv(url, sep='\t', encoding='utf-8')
     print(data.head())  # 데이터프레임 출력
     return data
 
