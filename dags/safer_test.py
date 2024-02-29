@@ -16,6 +16,7 @@ def Data():
     encoded_url = urllib.parse.quote(url, safe=':/')
     
     data = pd.read_csv(encoded_url, sep='\t', encoding='utf-8')
+    print(data)  # 데이터프레임 출력
     return data
 
 def Columns(data):
