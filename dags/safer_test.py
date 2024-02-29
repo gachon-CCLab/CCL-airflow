@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
     
  
 def Data():
-    url = "http://192.9.202.101:/volume2/디스크02/mnt/nas/disk02/Data/Health/Mental_Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv"
+    url = "http://192.9.202.101:/디스크02/Data/Health/Mental_Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv"
     encoded_url = urllib.parse.quote(url, safe=':/')
     
     data = pd.read_csv(encoded_url, sep='\t', encoding='utf-8')
