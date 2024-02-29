@@ -54,21 +54,14 @@ Column = PythonOperator(
     dag = dag
 )
 
-t1 = FileSensor(
-    task_id = 'sensor_a',
-    fs_conn_id = 'file_sensor',
-    filepaht='snuh_sensing.csv',
-    dag=dag,
-)
+# t1 = FileSensor(
+#     task_id = 'sensor_a',
+#     fs_conn_id = 'file_sensor',
+#     filepaht='snuh_sensing.csv',
+#     dag=dag,
+# )
 
 
 
-check = BashOperator(
-    task_id = 'file_check',
-    bash_command = 'cat /mnt/nas/disk02/Data/Health/Mental_Health/SAFER/20240201/snuh_20240126/snuh_sensing.csv',
-    dag = dag,
 
-)
-
-
-check>>print_starting >> Column
+print_starting >> Column
