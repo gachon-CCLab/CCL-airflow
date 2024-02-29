@@ -4,8 +4,6 @@ import pandas as pd
 
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
-from airflow.operators.python import BashOperator
-from airflow.sensors.filesystem import FileSensor #파일 찾기
 from datetime import datetime, timedelta
 
 
