@@ -47,8 +47,10 @@ print_starting = PythonOperator(
 )
 Column = PythonOperator(
     task_id = 'Column',
+    op_args=[Data()], #데이터 받아오기
     python_callable = Columns,
     provide_context = True,
+    
     dag = dag
 )
 
