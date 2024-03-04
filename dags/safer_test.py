@@ -23,8 +23,8 @@ def Data():
 default_args = {
     'owner': 'airflow',
     'start_date': datetime(2024,2,27),
-    'retries': 1,
-    'retry_delay': timedelta(minutes=5),
+    'retries': 0,
+    'retry_delay': timedelta(minutes=1),
 }
 
 dag = DAG(
