@@ -15,10 +15,6 @@ def Data():
     print(data.head())  # 데이터프레임 출력
     return data
 
-# def Columns():
-#     data = Data()  # 데이터 받아오기
-#     data.columns = ['targetId', '이름', 'deviceId', '데이터', 'targetTime']  # 열 이름을 변경합니다.
-#     return data
 
 default_args = {
     'owner': 'airflow',
