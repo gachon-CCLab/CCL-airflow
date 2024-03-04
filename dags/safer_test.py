@@ -8,7 +8,7 @@ from airflow.operators.python_operator import PythonOperator
 from datetime import datetime, timedelta
 
 def Data():
-    url = "http://192.9.202.101/%EB%94%94%EC%8A%A402/Data/Health/Mental_Health/SAFER/20240201/dumc_20240126/snuh_location.csv"
+    url = "http://ccl.gachon.ac.kr/Data/Health/Mental_Health/SAFER/20240201/dumc_20240126/snuh_location.csv"
     data = pd.read_csv(url, sep='\t', encoding='utf-8')
     print(data.head())  # 데이터프레임 출력
     return data
