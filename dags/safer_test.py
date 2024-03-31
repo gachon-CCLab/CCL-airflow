@@ -1,37 +1,18 @@
-import os
-import requests
-import pandas as pd
-import urllib.parse
-
 from airflow import DAG
-from airflow.operators.python_operator import PythonOperator
-from datetime import datetime, timedelta
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+import pandas as pd
+from sqlalchemy import create_engine
 
-def Data():
-    url = "http://ccl.gachon.ac.kr/Data/Health/Mental_Health/SAFER/20240201/dumc_20240126/snuh_location.csv"
-    data = pd.read_csv(url, sep='\t', encoding='utf-8')
-    print(data.head())  # 데이터프레임 출력
-    return data
+def query_mysql():
+    # SQLAlchemy 엔진을 사용하여 MySQL 연결 생성
+    engine = create_engine('mysql+pymysql://root:root@210.102.181.208:40011/safer')
+    with engine.connect() as connection:
+        result = pd.read_sql_query('SELECT * FROM crf', con=connection)
+    print(result)
 
-default_args = {
-    'owner': 'airflow',
-    'start_date': datetime(2024, 2, 27),
-    'retries': 0,
-    'retry_delay': timedelta(minutes=1),
-}
-
-dag = DAG(
-    'safer_data',
-    default_args=default_args,
-    description='safer_processing',
-    schedule_interval=timedelta(days=1),
-)
-
-print_starting = PythonOperator(
-    task_id='print_starting',
-    python_callable=Data,
-    provide_context=True,
-    dag=dag,
-)
-
-print_starting
+with DAG('mysql_example_dag', start_date=datetime(2022, 1, 1), schedule_interval='@daily', catchup=False) as dag:
+    query_task = PythonOperator(
+        task_id='query_mysql',
+        python_callable=query_mysql
+    )
